@@ -1,3 +1,3 @@
 # works
 
-custom switch(./custom_switch.mp4)
+[custom switch](./custom_switch.mp4)
