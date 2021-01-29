@@ -1,3 +1,3 @@
 # works
 
-[custom switch](./custom_switch.mp4)
+<video src="./custom_switch.mp4" controls="controls"></video>
