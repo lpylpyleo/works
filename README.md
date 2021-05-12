@@ -6,8 +6,6 @@
 Coding in 2 hours
 
 [code](./sample employment app)
-=======
-Coding within 2 hours
 
 ![employment app](./screenshots/interview_app.gif)
 
