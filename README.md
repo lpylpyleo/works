@@ -5,7 +5,7 @@
 
 Coding in 2 hours
 
-[code](./sample employment app)
+[code](https://github.com/lpylpyleo/works/tree/master/sample_employment_app)
 
 ![employment app](./screenshots/interview_app.gif)
 
