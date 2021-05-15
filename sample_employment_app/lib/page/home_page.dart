@@ -4,6 +4,79 @@ import 'package:interview_app/config/style.dart';
 import 'package:interview_app/widget/list.dart';
 import 'package:interview_app/widget/search.dart';
 
+import 'chat_page.dart';
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key key}) : super(key: key);
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  PageController pageController;
+  int page = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+        elevation: 0,
+      ),
+      body: Stack(
+        children: [
+          PageView(
+            controller: pageController,
+            children: [
+              const HomePage(),
+              const ChatPage(),
+            ],
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                page = 1 - page;
+                pageController.jumpToPage(page);
+              },
+              child: SafeArea(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Container(
+                    height: 54,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF191927).withOpacity(0.88),
+                      borderRadius: BorderRadius.circular(27),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+      backgroundColor: Style.backgroundColor,
+    );
+  }
+}
+
+/// 未做文字防抖处理
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -90,24 +163,27 @@ class _HomePageState extends State<HomePage>
       children: <Widget>[
         Column(
           children: <Widget>[
-            Container(
-              width: double.infinity,
-              height: 48,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: TabBar(
-                indicator: const ColorTabIndicator(Style.backgroundColor),
-                labelColor: Style.activeTabLabelColor1,
-                unselectedLabelColor: Style.inactiveTabLabelColor1,
-                labelStyle: labelStyle,
-                unselectedLabelStyle: unselectedLabelStyle,
-                labelPadding: EdgeInsets.only(right: 16.0),
-                isScrollable: true,
-                tabs: const <Tab>[
-                  Tab(text: 'UI设计'),
-                  Tab(text: '产品经理'),
-                  Tab(text: '前端工程师'),
-                ],
-                controller: tabController1,
+            Theme(
+              data: Theme.of(context).copyWith(primaryColor: Colors.white),
+              child: Container(
+                width: double.infinity,
+                height: 48,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: TabBar(
+                  indicator: const ColorTabIndicator(Style.backgroundColor),
+                  labelColor: Style.activeTabLabelColor1,
+                  unselectedLabelColor: Style.inactiveTabLabelColor1,
+                  labelStyle: labelStyle,
+                  unselectedLabelStyle: unselectedLabelStyle,
+                  labelPadding: EdgeInsets.only(right: 16.0),
+                  isScrollable: true,
+                  tabs: const <Tab>[
+                    Tab(text: 'UI设计'),
+                    Tab(text: '产品经理'),
+                    Tab(text: '前端工程师'),
+                  ],
+                  controller: tabController1,
+                ),
               ),
             ),
             Expanded(
@@ -118,6 +194,7 @@ class _HomePageState extends State<HomePage>
                     children: <Widget>[
                       Container(
                         width: double.infinity,
+                        color: Style.backgroundColor,
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Row(
                           children: [
@@ -127,6 +204,7 @@ class _HomePageState extends State<HomePage>
                                 child: TabBar(
                                   indicator: const ColorTabIndicator(
                                       Style.backgroundColor),
+                                  indicatorColor: Style.backgroundColor,
                                   labelColor: Style.activeTabLabelColor1,
                                   unselectedLabelColor:
                                       Style.inactiveTabLabelColor1,

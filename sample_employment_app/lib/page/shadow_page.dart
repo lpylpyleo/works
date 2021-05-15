@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:interview_app/widget/inner_shadow.dart';
 
-class Shadow extends StatefulWidget {
-  const Shadow({Key key}) : super(key: key);
+class ShadowPage extends StatefulWidget {
+  const ShadowPage({Key key}) : super(key: key);
 
   @override
-  _ShadowState createState() => _ShadowState();
+  _ShadowPageState createState() => _ShadowPageState();
 }
 
-class _ShadowState extends State<Shadow> {
+class _ShadowPageState extends State<ShadowPage> {
   double blur = 10;
   double offsetX = 10;
   double offsetY = 10;
 
   @override
   Widget build(BuildContext context) {
-    final color = Colors.white;
+    // final color = Colors.white;
     // final color = Colors.grey[300];
     return Scaffold(
       body: Center(
@@ -100,7 +100,7 @@ class _ShadowState extends State<Shadow> {
                 },
               ),
             ),
-            Text("Offse Y ${offsetY.round()}"),
+            Text("Offset Y ${offsetY.round()}"),
             ConstrainedBox(
               constraints: BoxConstraints.tightFor(width: 300),
               child: Slider.adaptive(
